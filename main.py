@@ -1,15 +1,19 @@
 from fastapi import FastAPI
 from scalar_fastapi import get_scalar_api_reference
+import datetime
 
-app = FastAPI()
+IrisApp = FastAPI()
 
-@app.get("/")
+@IrisApp.get("/")
 async def Root():
-    return { "Hello": "World" }
+    return {
+        "Hello": "World",
+        "Time": f"{datetime.datetime.now()}"
+        }
 
-@app.get("/scalar")
+@IrisApp.get("/scalar")
 async def ScalarDocs():
     return get_scalar_api_reference(
-        openapi_url = app.openapi_url,
+        openapi_url = IrisApp.openapi_url,
         scalar_proxy_url = "https://proxy.scalar.com",
     )

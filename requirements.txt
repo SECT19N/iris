@@ -1,2 +1,6 @@
 fastapi[standard]
 scalar-fastapi
+python-multipart
+redis
+uvicorn
+python-jose
